@@ -24,7 +24,7 @@ GigFlow is built with modern web technologies including a React/TypeScript front
 This project uses:
 
 - **Frontend:** React + TypeScript
-- **Backend:** (mention your backend stack)
+- **Backend:** MongoDB
 - **Styling:** (Tailwind CSS, etc.)
 - **Other Tools:** (e.g., Vite, Drizzle, etc.)
 
