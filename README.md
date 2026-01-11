@@ -1,44 +1,69 @@
-# GigFlow 🚀
+# GigFlow – Mini Freelance Marketplace 🚀
 
-GigFlow is a web-based platform designed to simplify and streamline gig-based workflows.  
-It focuses on connecting tasks, users, and workflows in a structured and scalable way, making gig management more efficient and transparent.
+GigFlow is a full-stack mini freelance marketplace platform where **Clients can post jobs (Gigs)** and **Freelancers can apply by placing bids**.  
+The platform demonstrates secure authentication, role-based actions, relational data modeling, and atomic hiring logic.
+
+This project was built as part of a **Full Stack Development Internship Assignment**.
 
 ---
 
 ## 📌 Project Overview
 
-GigFlow aims to solve common problems in gig-based systems such as task tracking, workflow management, and smooth user interaction.  
-The project is built using modern web technologies with a focus on clean architecture, reusability, and performance.
+GigFlow allows users to:
+- Register and authenticate securely
+- Post gigs as a client
+- Browse and search available gigs
+- Place bids as a freelancer
+- Hire exactly one freelancer per gig with safe, atomic logic
 
-This repository contains the complete source code for the GigFlow application.
+Roles are **fluid**, meaning the same user can act as both a client and a freelancer.
 
 ---
 
-## ✨ Features
+## ✨ Core Features
 
-- User-friendly interface for managing gigs and tasks  
-- Modular and scalable project structure  
-- Clean and maintainable codebase  
-- Responsive design for different screen sizes  
-- Easy setup and development workflow  
+### 🔐 User Authentication
+- Secure user registration and login
+- JWT-based authentication using **HttpOnly cookies**
+- Protected routes for authenticated users
+
+### 📄 Gig Management (CRUD)
+- Create new job posts (Title, Description, Budget)
+- Browse all open gigs
+- Search gigs by title
+- Gig status handling (`open`, `assigned`)
+
+### 💼 Bidding System
+- Freelancers can submit bids with a message and price
+- Each gig can have multiple bids
+- Only the gig owner can view received bids
+
+### 🧠 Hiring Logic (Atomic)
+- Client can hire **only one** freelancer per gig
+- When a bid is hired:
+  - Gig status changes to `assigned`
+  - Selected bid is marked as `hired`
+  - All other bids are automatically marked as `rejected`
+- Logic handled securely to prevent race conditions
 
 ---
 
 ## 🛠 Tech Stack
 
-**Frontend**
-- React
-- TypeScript
+### Frontend
+- React.js (Vite)
+- Tailwind CSS
+- Redux Toolkit
 
-**Styling**
-- CSS / Tailwind CSS 
+### Backend
+- Node.js
+- Express.js
+- JWT Authentication
+- MongoDB with Mongoose
 
-**Backend**
-- Node.js / API layer / MongoDB
-
-**Tools & Utilities**
+### Other Tools
 - Git & GitHub
-- npm / yarn
+- Axios
 
 ---
 
@@ -46,12 +71,19 @@ This repository contains the complete source code for the GigFlow application.
 
 ```text
 gigflow/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── services/
-│   ├── utils/
-│   └── App.tsx
-├── public/
+├── backend/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   └── server.js
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── redux/
+│   │   └── App.jsx
+│   └── main.jsx
+├── .env.example
 ├── package.json
 └── README.md
